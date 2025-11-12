@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecetasIA | Descubre recetas con los ingredientes que tienes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fas fa-utensils"></i> RecetIA
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Recetas</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> Información</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Descubre recetas con los ingredientes que tienes</h1>
+            <p>Nuestra inteligencia artificial te recomienda platos deliciosos adaptados a la cultura gastronómica peruana</p>
+        </div>
+        
+        <form action="{{ url_for('buscar_recetas') }}" method="POST">
+            <div class="search-form-container">
+                <h2>¿Qué tienes en tu cocina?</h2>
+                <div class="search-input-group">
+                    <input type="text" placeholder="Ej: pollo, papas, cebolla..." name="ingredientes">
+                    <select id="region-select" name="region">
+                        <option value="" disabled selected hidden>Región</option>
+                        <option value="costa">Costa</option>
+                        <option value="sierra">Sierra</option>
+                        <option value="selva">Selva</option>
+                    </select>
+                    </div>
+                <div class="search-actions">
+                    <button class="search-button" type="submit"><i class="fas fa-search"></i> Buscar recetas</button>
+                    <div class="ingredient-chips">
+                        <span>Pollo</span>
+                        <span>Papa</span>
+                        <span>Cebolla</span>
+                        <span>Apio</span>
+                    </div>
+                    <a href="#" class="how-it-works">¿Cómo funciona?</a>
+                </div>
+            </div>
+        </form>
+        </section>
+
+    <section class="metrics-bar">
+        <div class="metric-item">
+            <span class="number">500+</span>
+            <span class="label">Recetas</span>
+        </div>
+        <div class="metric-item">
+            <span class="number">1K</span>
+            <span class="label">Usuarios Activos</span>
+        </div>
+        <div class="metric-item">
+            <span class="number">98%</span>
+            <span class="label">Satisfacción</span>
+        </div>
+        <div class="metric-item">
+            <span class="number">24/7</span>
+            <span class="label">Disponibilidad</span>
+        </div>
+    </section>
+
+    <section class="popular-recipes">
+        <h2>Recetas Populares</h2>
+        <div class="recipe-cards-container">
+            <div class="recipe-card">
+                <img src="{{ url_for('static', filename='images/lomo-saltado.jpg') }}" alt="Lomo Saltado" class="recipe-img">
+                <div class="recipe-info">
+                    <h3>Lomo Saltado</h3>
+                    <span class="tag peru">Perú</span>
+                    <p>Plato fusión de carne, tomate y cebolla con papas fritas</p>
+                    <div class="recipe-details">
+                        <span class="time"><i class="far fa-clock"></i> 30 min</span>
+                        <a href="#" class="view-recipe">Ver receta →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <img src="{{ url_for('static', filename='images/causa.jpg') }}" alt="Causa Rellena" class="recipe-img">
+                <div class="recipe-info">
+                    <h3>Causa</h3>
+                    <span class="tag peru">Perú</span>
+                    <p>Puré de papa amarilla relleno de pollo y mayonesa</p>
+                    <div class="recipe-details">
+                        <span class="time"><i class="far fa-clock"></i> 45 min</span>
+                        <a href="#" class="view-recipe">Ver receta →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <img src="{{ url_for('static', filename='images/aji-gallina.jpg') }}" alt="Ají de Gallina" class="recipe-img">
+                <div class="recipe-info">
+                    <h3>Ají de Gallina</h3>
+                    <span class="tag peru">Perú</span>
+                    <p>Pollo deshilachado en salsa de ají amarillo con arroz</p>
+                    <div class="recipe-details">
+                        <span class="time"><i class="far fa-clock"></i> 50 min</span>
+                        <a href="#" class="view-recipe">Ver receta →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2>Características</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-globe-americas icon-red"></i>
+                <h3>Adaptación Cultural</h3>
+                <p>Recetas basadas en la rica tradición culinaria peruana, con platos típicos de cada región</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heartbeat icon-red"></i>
+                <h3>Nutrición Balanceada</h3>
+                <p>Recomendaciones que consideran valores nutricionales y necesidades dietéticas</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-leaf icon-red"></i>
+                <h3>Cocina Sostenible</h3>
+                <p>Aprovecha al máximo tus ingredientes y reduce el desperdicio de alimentos</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lightbulb icon-red"></i>
+                <h3>Fomenta Creatividad</h3>
+                <p>Inspiración para innovar en la cocina con ingredientes disponibles</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-info">
+            <h2>Información</h2>
+            <div class="footer-content">
+                <div class="footer-links-group">
+                    <p>Innovación en la cocina peruana con inteligencia artificial</p>
+                </div>
+                <div class="footer-links-group">
+                    <ul>
+                        <li>&gt; Inicio</li>
+                        <li>&gt; Recetas</li>
+                        <li>&gt; Acerca de</li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <ul>
+                        <li>Términos de Uso</li>
+                        <li>Política de Privacidad</li>
+                        <li>Cookies</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> contacto@recetasai.pe</p>
+                    <p><i class="fas fa-phone-alt"></i> +51 1 234 5678</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RecetasAI Perú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

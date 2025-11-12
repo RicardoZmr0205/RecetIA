@@ -1,0 +1,14 @@
+1. Tener instalado python 3
+
+2. Hay dos maneras de ejecutar:
+	1era - Abriendo el programa visual studio code y abrir la consola (ctrl + ñ) 
+	2da - Abrir powershell o tambien dicho CMD digitando en busqueda de windows
+	Si se desea abrir desde CMD, se tiene que colocar la ruta del archivo colocando previamente 'cd' (sin las comillas)
+	Ejemplo >> cd C:\Program Files\RECETAI
+	Pulsar enter
+
+3. Digitar el siguiente comando: python -m pip install -r requerimientos.txt 
+(Esto instala los paquetes que necesita la página para poder ejecutarse)
+
+4. Digitar lo siguiente: python app.py
+(El codigo ejecutara el archivo app.py y se podra abrir desde la ruta http://127.0.0.1:5000)
