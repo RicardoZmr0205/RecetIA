@@ -1,0 +1,2 @@
+# RecetIA
+Proyecto python
