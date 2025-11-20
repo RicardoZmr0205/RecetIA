@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tu Receta | RecetIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS ADICIONALES PARA menu.html --- */
+        .menu-selection-container {
+            padding: 50px 5%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .menu-selection-container h1 {
+            font-size: 32px;
+            text-align: center;
+            color: #d92329;
+            margin-bottom: 10px;
+        }
+
+        .menu-selection-container .summary {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .recipe-card-menu {
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            border-left: 5px solid #d92329; /* Borde rojo destacado */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .recipe-card-menu h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .recipe-card-menu .tag {
+            background-color: #5cb85c; /* Etiqueta de región verde */
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .recipe-card-menu p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0 15px 0;
+        }
+
+        .view-recipe-button {
+            background-color: #d92329;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            flex-shrink: 0; /* Asegura que el botón no se encoja */
+        }
+
+        .view-recipe-button:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <i class="fas fa-utensils"></i> RecetIA
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="menu-selection-container">
+        <h1>¡Recetas Encontradas!</h1>
+        <p class="summary">Hemos encontrado **{{ recetas | length }}** platos de la **Región {{ region | upper }}**. Selecciona el que más te apetezca:</p>
+        
+        <div class="recipe-cards-container">
+            {% for receta in recetas %}
+            <div class="recipe-card-menu">
+                <div class="recipe-info">
+                    <h3>{{ receta.titulo }}</h3>
+                    <span class="tag region-tag">{{ region | upper }}</span>
+                    <p>{{ receta.descripcion_corta }}</p>
+                </div>
+                
+                <form action="{{ url_for('mostrar_detalle') }}" method="POST" style="margin-left: 20px;">
+                    <input type="hidden" name="titulo" value="{{ receta.titulo }}">
+                    <input type="hidden" name="region" value="{{ region }}">
+                    <button type="submit" class="view-recipe-button"><i class="fas fa-arrow-right"></i> Ver Receta Completa</button>
+                </form>
+            </div>
+            {% endfor %}
+            
+            {% if not recetas %}
+                <p style="text-align: center;">Lo sentimos, la IA no pudo generar ninguna opción de menú con los datos proporcionados.</p>
+            {% endif %}
+        </div>
+        
+        <p style="margin-top: 30px; text-align: center;"><a href="{{ url_for('index') }}" class="view-recipe">← Buscar otros ingredientes</a></p>
+    </main>
+    
+</body>
+</html>
