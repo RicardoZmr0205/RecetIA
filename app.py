@@ -92,8 +92,9 @@ def buscar_recetas():
 
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     
     print("\n--- Ejecutando RecetIA ---")
     print("Asegúrate de que la variable GEMINI_API_KEY esté configurada.")
-    app.run(debug=True)
+
+#    app.run(debug=True)
