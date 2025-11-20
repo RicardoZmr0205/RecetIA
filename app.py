@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Configuración del cliente Gemini
 try:
     # Intenta obtener la clave API de la variable de entorno
-    api_key = "AIzaSyAzRWRMGWO1QKuworJHMYVKvedmEoJ7578"
+    api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         # Si la clave no está en el entorno, lanza una advertencia
         raise ValueError("La variable de entorno GEMINI_API_KEY no está configurada.")
@@ -111,4 +111,5 @@ if __name__ == '__main__':
     # Asegúrate de que tu clave API esté configurada antes de ejecutar
     print("\n--- Ejecutando RecetIA ---")
     print("Asegúrate de que la variable GEMINI_API_KEY esté configurada.")
+
     app.run(debug=True)
