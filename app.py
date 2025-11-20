@@ -91,10 +91,10 @@ def buscar_recetas():
         return render_template('resultado.html', resultado=f"Ocurrió un error inesperado en el servidor: {e}"), 500
 
 
-
-#if __name__ == '__main__':
+if __name__ == '__main__':
     
     print("\n--- Ejecutando RecetIA ---")
     print("Asegúrate de que la variable GEMINI_API_KEY esté configurada.")
 
 #    app.run(debug=True)
+
